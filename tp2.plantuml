@@ -1,0 +1,35 @@
+@startuml
+class post{
+    -string titulo
+    -string nombre_usuario_creador
+    -string fecha_creacion
+    -string contenido
+    -int votos
+
+    post(string titulo, string creador, string contenido)
+    string getTilulo()
+    void votarUp()
+    void votarDown()
+    void imprimirVotos()
+    void imprimirComentarioMasVotado()
+    void imprimirComentarios()
+    void imprimirUsuarioMasParticipo()
+    void borrarPost()
+    void borrarComentario()
+    void agregarComentario()
+    void responderComentario()
+}
+
+class comentario{
+    -string nombre_usuario_creador
+    -string contenido
+    -int votos
+    -string fecha_creacion
+
+    comentario(string nombre, string contenido)
+    void votarUp()
+    void votarDown()
+}
+
+
+@enduml
