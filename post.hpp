@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class comentario{
+class post{
 private:
     string nombre_usuario_creador;
     string contenido;
@@ -13,17 +13,17 @@ private:
     chrono::system_clock::time_point tiempo;
 
 public:
-    comentario(string nombre, string contenido){
+    post(string nombre, string contenido){
         votos = 0;
         this->contenido = contenido;
         nombre_usuario_creador = nombre;
         tiempo = chrono::system_clock::now();
     }
 
-    string getComentario(){
+    string getContenido(){
         return contenido;
     }
-    
+
     void imprimirContenido(){
         cout<<contenido<<endl;
     }
@@ -39,9 +39,5 @@ public:
     void votarDown(){
         votos -= 1;
     }
-
-    std::chrono::time_point<std::chrono::system_clock> getTiempo() const {
-        return tiempo;
-    }
-
+    
 };
