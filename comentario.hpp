@@ -11,13 +11,15 @@ private:
     string contenido;
     int votos;
     chrono::system_clock::time_point tiempo;
+    int id; 
 
 public:
-    comentario(string nombre, string contenido){
+    comentario(string nombre, string contenido, int numero){
         votos = 0;
         this->contenido = contenido;
         nombre_usuario_creador = nombre;
         tiempo = chrono::system_clock::now();
+        id = numero;
     }
 
     string getComentario(){

@@ -11,13 +11,15 @@ private:
     string contenido;
     int votos;
     chrono::system_clock::time_point tiempo;
+    int id;
 
 public:
-    post(string nombre, string contenido){
+    post(string nombre, string contenido, int numero){
         votos = 0;
         this->contenido = contenido;
         nombre_usuario_creador = nombre;
         tiempo = chrono::system_clock::now();
+        id = numero;
     }
 
     string getContenido(){
@@ -39,5 +41,13 @@ public:
     void votarDown(){
         votos -= 1;
     }
-    
+
+    std::chrono::time_point<std::chrono::system_clock> getTiempo() const {
+        return tiempo;
+    }
+
+    int getId(){
+        return id;
+    }
+
 };
