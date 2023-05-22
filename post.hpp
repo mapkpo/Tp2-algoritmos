@@ -3,6 +3,7 @@
 #include <sstream>
 #include <chrono>
 
+
 using namespace std;
 
 class post{
@@ -12,6 +13,7 @@ private:
     int votos;
     chrono::system_clock::time_point tiempo;
     int id;
+    
 
 public:
     post(string nombre, string contenido, int numero){
@@ -20,6 +22,19 @@ public:
         nombre_usuario_creador = nombre;
         tiempo = chrono::system_clock::now();
         id = numero;
+        
+    }
+
+    bool operator<(const post& other) const {  //agrege los operadores
+    return id < other.id;
+    }
+
+    bool operator>(const post& other) const {
+    return id > other.id;
+    }
+
+    bool operator==(const post& other) const {
+    return id == other.id;
     }
 
     string getContenido(){
@@ -46,10 +61,20 @@ public:
         return tiempo;
     }
 
-    int getId(){
+    int getId() const{
         return id;
     }
 
+    
+
+
+
+
+
 };
 
-class comentario : public post{};
+class comentario : public post{
+
+public:
+    comentario(string nombre, string contenido, int numero) : post(nombre, contenido, numero) {}
+};
