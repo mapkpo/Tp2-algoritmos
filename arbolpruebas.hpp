@@ -158,26 +158,38 @@ template <class T> void arbol<T>::AgregarComentario(T x, int postId, int comenta
     comentario->der = NULL;
     aux->izq = comentario;
     return;
-    } else {    //caso 2 hay un comentario se divide entre mismo comentarioId y no
+    } 
+    
+    if(aux->izq != NULL) {//caso 2 hay un comentario
 
     while(aux->izq != NULL && aux->info->getId() != comentarioId){
-        aux = aux->izq;
-    } 
+        aux = aux->izq;  
+    }
 
     if(aux->info->getId() == comentarioId){
+        aux = aux->izq;
+
+        while(aux->der != NULL){ //itera hasta llegar al nulo
+            aux = aux->der;
+        }
+
+        if(aux->der == NULL){
+            nodo<T>* comentario = new nodo<T>;
+            comentario->info = new T(x);
+            comentario->izq = NULL;
+            comentario->der = NULL;
+            aux->der = comentario;
+            return;
+        }
+    }
+    
+    if(aux->info->getId() != comentarioId){
     nodo<T>* comentario = new nodo<T>;
     comentario->info = new T(x);
     comentario->izq = NULL;
     comentario->der = NULL;
-    aux->der = comentario;
-    } 
-    else 
-        { //caso 3 es otro comentario independiente
-    nodo<T>* comentario = new nodo<T>;
-    comentario->info = new T(x);
-    comentario->izq = NULL;
-    comentario->der = NULL;
-    aux->izq = comentario;
-        }    
+    aux->izq = comentario; 
+    
+        }     
     }
 }

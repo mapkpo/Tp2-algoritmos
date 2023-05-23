@@ -66,5 +66,6 @@ public:
 class comentario : public post{
 
 public:
-    comentario(string nombre, string contenido, int numero) : post(nombre, contenido, numero) {}
+    comentario(string nombre, string contenido, int numero) : post(nombre, contenido, numero){}
+
 };
