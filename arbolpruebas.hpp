@@ -45,7 +45,6 @@ template <class T> void arbol<T>::AgregarPost(T x, int postId)
    ArbolBusq(x, raiz);
 }
 
-
 template <class T> void arbol<T>::ArbolBusq(T x, nodo<T>*& nuevo)
 {
     if (nuevo == NULL) {
@@ -161,13 +160,9 @@ template <class T> void arbol<T>::AgregarComentario(T x, int postId, int comenta
     return;
     } else {    //caso 2 hay un comentario se divide entre mismo comentarioId y no
 
-    cout<<aux->info->getContenido()<<endl;
-
     while(aux->izq != NULL && aux->info->getId() != comentarioId){
         aux = aux->izq;
     } 
-    cout<<aux->info->getContenido()<<endl;
-    cout<<aux->info->getId()<<endl;
 
     if(aux->info->getId() == comentarioId){
     nodo<T>* comentario = new nodo<T>;
@@ -175,13 +170,14 @@ template <class T> void arbol<T>::AgregarComentario(T x, int postId, int comenta
     comentario->izq = NULL;
     comentario->der = NULL;
     aux->der = comentario;
-    } else { //caso 3 es otro comentario independiente
+    } 
+    else 
+        { //caso 3 es otro comentario independiente
     nodo<T>* comentario = new nodo<T>;
     comentario->info = new T(x);
     comentario->izq = NULL;
     comentario->der = NULL;
     aux->izq = comentario;
+        }    
     }
-    
-}
 }

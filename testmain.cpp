@@ -42,6 +42,7 @@ miArbol.AgregarComentario(c4,c4.getId(),4);
 miArbol.VerArbol();
 
 
+system("pause");
 
 
 }
