@@ -33,10 +33,6 @@ public:
     return id > other.id;
     }
 
-    bool operator==(const post& other) const {
-    return id == other.id;
-    }
-
     string getContenido(){
         return contenido;
     }
@@ -64,12 +60,6 @@ public:
     int getId() const{
         return id;
     }
-
-    
-
-
-
-
 
 };
 

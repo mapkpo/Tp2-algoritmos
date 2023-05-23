@@ -27,7 +27,7 @@ private:
 public:
     arbol() { raiz = NULL; };
     ~arbol() {};
-    void CreaArbolBus(T x);
+    void AgregarPost(T x, int postId);
     void RID() { rid(raiz); }
     void IRD() { ird(raiz); }
     void IDR() { idr(raiz); }
@@ -36,13 +36,15 @@ public:
     void MostrarHojas() { mh(raiz); }
     T Menor() { return menor(raiz); }
     bool Esta(T x) { return esta(raiz, x); }
+    void AgregarComentario(T x, int postId, int comentarioId);
 };
 
 
-template <class T> void arbol<T>::CreaArbolBus(T x)
-{
-    ArbolBusq(x, raiz);
+template <class T> void arbol<T>::AgregarPost(T x, int postId)
+{   
+   ArbolBusq(x, raiz);
 }
+
 
 template <class T> void arbol<T>::ArbolBusq(T x, nodo<T>*& nuevo)
 {
@@ -54,16 +56,6 @@ template <class T> void arbol<T>::ArbolBusq(T x, nodo<T>*& nuevo)
     if (x > *(nuevo->info)) ArbolBusq(x, nuevo->der); //estos dos los modifique
     if (x < *(nuevo->info)) ArbolBusq(x, nuevo->izq);
 }
-
-
-
-
-
-
-
-
-
-
 
 template <class T> void arbol<T>::rid(nodo<T>* aux)
 {
@@ -151,4 +143,45 @@ template <class T> T arbol<T>::menor(nodo<T>* aux)
 {
     if (aux->izq == NULL)return aux->info;
     return menor(aux->izq);
+}
+
+template <class T> void arbol<T>::AgregarComentario(T x, int postId, int comentarioId)
+{
+    nodo<T>* aux = raiz;
+    while (aux->info->getId() != postId) { //itero hasta llegar al post que busco
+        aux = aux->der;
+    }
+    
+    if(aux->izq == NULL){ //caso 1 no hay comentario 
+    nodo<T>* comentario = new nodo<T>;
+    comentario->info = new T(x);
+    comentario->izq = NULL;
+    comentario->der = NULL;
+    aux->izq = comentario;
+    return;
+    } else {    //caso 2 hay un comentario se divide entre mismo comentarioId y no
+
+    cout<<aux->info->getContenido()<<endl;
+
+    while(aux->izq != NULL && aux->info->getId() != comentarioId){
+        aux = aux->izq;
+    } 
+    cout<<aux->info->getContenido()<<endl;
+    cout<<aux->info->getId()<<endl;
+
+    if(aux->info->getId() == comentarioId){
+    nodo<T>* comentario = new nodo<T>;
+    comentario->info = new T(x);
+    comentario->izq = NULL;
+    comentario->der = NULL;
+    aux->der = comentario;
+    } else { //caso 3 es otro comentario independiente
+    nodo<T>* comentario = new nodo<T>;
+    comentario->info = new T(x);
+    comentario->izq = NULL;
+    comentario->der = NULL;
+    aux->izq = comentario;
+    }
+    
+}
 }
