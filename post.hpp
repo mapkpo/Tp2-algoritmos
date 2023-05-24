@@ -9,20 +9,20 @@ using namespace std;
 class post{
 private:
     string nombre_usuario_creador;
+    string titulo;
     string contenido;
     int votos;
     chrono::system_clock::time_point tiempo;
     int id;
     
-
 public:
-    post(string nombre, string contenido, int numero){
+    post(string nombre, string contenido, int numero , string titulo){
         votos = 0;
         this->contenido = contenido;
+        this->titulo = titulo; 
         nombre_usuario_creador = nombre;
         tiempo = chrono::system_clock::now();
-        id = numero;
-        
+        id = numero;    
     }
 
     bool operator<(const post& other) const {  //agrege los operadores
@@ -31,6 +31,10 @@ public:
 
     bool operator>(const post& other) const {
     return id > other.id;
+    }
+
+    bool operator==(const post& other) const {
+    return id == other.id;
     }
 
     string getContenido(){
@@ -61,11 +65,15 @@ public:
         return id;
     }
 
+    string getNombre(){
+        return nombre_usuario_creador;
+    }
+
 };
 
 class comentario : public post{
 
 public:
-    comentario(string nombre, string contenido, int numero) : post(nombre, contenido, numero){}
+    comentario(string nombre, string contenido, int numero) : post(nombre, contenido, numero, "comentario"){}
 
 };
