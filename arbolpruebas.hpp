@@ -20,9 +20,10 @@ private:
     void mh(nodo<T>* aux); 
     T menor(nodo<T>* aux); 
     bool esta(nodo<T>* aux, T x);
-
     void printMasVotado(nodo<T>*& p, T post);
     nodo<T>* buscarNodo(nodo<T>* aux, const T& objeto);
+    int cantidadNodos(nodo<T>* aux);
+    int sumaVotos(nodo<T>* aux);
    
 
 public:
@@ -39,6 +40,9 @@ public:
     void Buscar(T x){buscarNodo(raiz, x);}
     void VotarUp(T x);
     void VotarDown(T x);
+    void ValoracionPromedio(T x);
+
+    
 };
 
 
@@ -268,5 +272,35 @@ nodo<T>* uno = buscarNodo(raiz, x);
 uno->info->votarDown();
 }
 
+template <class T> void arbol<T>::ValoracionPromedio(T x){
+    nodo<T>* comentarios = buscarNodo(raiz, x);
+    comentarios = comentarios->izq;
+    int cantnodos = cantidadNodos(comentarios);
+    int votostotales = sumaVotos(comentarios);
+    cout<<"La valoracion promedio de los comentarios del post es: "<<votostotales/cantnodos<<endl;
+}
 
+template <class T>
+int arbol<T>::cantidadNodos(nodo<T>* aux) {
+    if (aux == NULL) {
+        return 0;
+    }
+    
+    int contadorizq = cantidadNodos(aux->izq);    
+    int contadorder = cantidadNodos(aux->der);   
+
+    return 1 + contadorizq + contadorder;
+}
+
+template <class T> int arbol<T>::sumaVotos(nodo<T>* aux) {
+    if (aux != NULL) {
+
+        int sum = aux->info->getVotos(); 
+        sum += sumaVotos(aux->der);
+        sum += sumaVotos(aux->izq);
+
+        return sum;
+    }
+    return 0;  
+}
 

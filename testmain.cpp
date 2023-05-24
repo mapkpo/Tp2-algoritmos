@@ -55,7 +55,7 @@ miArbol.AgregarComentario(c4,3,3);
 miArbol.AgregarComentario(c5,3,3);
 miArbol.AgregarComentario(c6,1,2);
 
-//miArbol.VerArbol();
+miArbol.VerArbol();
 
 //para borrar llamo al metodo con el post a borrar
 
@@ -72,14 +72,14 @@ c5.votarUp();
 c5.votarUp();
 
 //miArbol.VerArbol();
-miArbol.ImprimirComentarioMasVotado(p3);
-miArbol.VotarDown(c4);
-miArbol.VotarDown(c4);
+//miArbol.ImprimirComentarioMasVotado(p3);
+//miArbol.VotarDown(c4);
+//miArbol.VotarDown(c4);
 
-miArbol.ImprimirComentarioMasVotado(p3);
+//miArbol.ImprimirComentarioMasVotado(p3);
 
 
-
+miArbol.ValoracionPromedio(p3);
 
 //system("pause");
 
