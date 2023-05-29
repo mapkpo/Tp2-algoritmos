@@ -25,13 +25,6 @@ comentario c4("comentador 1","comentario 4",4);
 comentario c5("comentador 2","comentario 5",5);
 comentario c6("comentador 1","comentario 6",6);
 
-c1.votarUp();
-c2.votarUp();
-c3.votarUp();
-c4.votarUp();
-c5.votarUp();
-c6.votarUp();
-
 /* 
 Primero el objeto, 
 segundo lugar a cual post se quiere agregar 
@@ -66,53 +59,54 @@ cout<<"-------------------------------------------"<<endl;
 
 miArbol.VerArbol();
 
-//miArbol.ImprimirComentarioMasVotado(p3);
+cout<<"-------------------------------------------"<<endl;
 
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
 
-miArbol.VotarUp(c4);
-miArbol.VotarUp(c5);
-miArbol.VotarUp(c6);
-miArbol.VotarUp(c1);
-miArbol.VotarUp(c4);
-miArbol.VotarUp(c5);
-miArbol.VotarUp(c6);
-miArbol.VotarUp(c1);
-miArbol.VotarUp(c4);
-miArbol.VotarUp(c5);
-miArbol.VotarUp(c6);
-miArbol.VotarUp(c1);
-miArbol.VotarUp(c4);
-miArbol.VotarUp(c5);
-miArbol.VotarUp(c6);
-miArbol.VotarUp(c1);
-miArbol.VotarUp(c4);
-miArbol.VotarUp(c5);
-miArbol.VotarUp(c6);
-miArbol.VotarUp(c1);
-miArbol.VotarUp(c4);
-miArbol.VotarUp(c5);
-miArbol.VotarUp(c6);
-miArbol.VotarUp(c1);
-miArbol.VotarUp(c4);
-miArbol.VotarUp(c5);
-miArbol.VotarUp(c6);
-miArbol.VotarUp(c1);
-miArbol.VotarUp(c4);
-miArbol.VotarUp(c5);
-miArbol.VotarUp(c6);
-miArbol.VotarUp(c1);
-miArbol.VotarUp(c4);
-miArbol.VotarUp(c5);
-miArbol.VotarUp(c6);
-miArbol.VotarUp(c1);
-miArbol.VotarUp(c4);
-miArbol.VotarUp(c5);
-miArbol.VotarUp(c6);
-miArbol.VotarUp(c1);
-miArbol.VotarUp(c4);
-miArbol.VotarUp(c5);
-miArbol.VotarUp(c6);
-miArbol.VotarUp(c1);
+miArbol.ImprimirComentarioMasVotado(p3);
 
 cout<<"-------------------------------------------"<<endl;
 
@@ -122,19 +116,11 @@ cout<<"-------------------------------------------"<<endl;
 
 miArbol.MostrarParticipaciones("comentador 1");
 
+cout<<"-------------------------------------------"<<endl;
+
+miArbol.UsuarioMasParticipo(p3);
+
 //system("pause");
-
-/*
-cout<<c1.getTiempo()<<endl;
-cout<<c2.getTiempo()<<endl;
-cout<<c3.getTiempo()<<endl;
-cout<<c4.getTiempo()<<endl;
-cout<<c5.getTiempo()<<endl;
-cout<<c6.getTiempo()<<endl;
-*/
-
-
-
 
 
 
