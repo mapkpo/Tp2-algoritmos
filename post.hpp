@@ -57,6 +57,7 @@ public:
     }
 
     std::chrono::time_point<std::chrono::system_clock> getTiempo() const{
+    //bool getTiempo(const post* other) const{
         return tiempo;
     }
 

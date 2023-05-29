@@ -81,7 +81,7 @@ string Lista<T>::toPrint(string p)
     else {
         //std::ostringstream stm;
         ostringstream stm;
-        stm << this->cabeza() << "-" << this->resto()->toPrint(p) << endl;
+        stm << this->cabeza()->getContenido() << " /// " << this->resto()->toPrint(p) << endl;
         //cout<<endl<<" stm.str()= "<<stm.str()<<endl;
         return stm.str();
     }
@@ -158,10 +158,11 @@ void Lista<T>::ordenamientoInsercion()
     Nodo<T>* actual = czo->get_next(); // Puntero al segundo nodo
     while (actual != NULL) {
         Nodo<T>* recorrido = czo;
-        while (recorrido != actual && recorrido != NULL) {
+        while (recorrido != actual) {
 
-            //if (recorrido->get_dato() > actual->get_dato()) { //este si anda solo comparando el id, pero no con el objeto tiempo pero la comparacion desde el main anda
-            if (recorrido->get_dato()->getTiempo() > actual->get_dato()->getTiempo()) {   //este no anda cuando comparo los tiempos
+            if (recorrido->get_dato() > actual->get_dato()) { //si cambio de > a < no anda 
+            //if (recorrido->get_dato()->getTiempo() > actual->get_dato()->getTiempo()) {   //este no anda cuando comparo los tiempos
+            //if (recorrido->get_dato()->getTiempo(actual->get_dato())) {
                 T temp = actual->get_dato();
                 actual->set_dato(recorrido->get_dato());
                 recorrido->set_dato(temp);

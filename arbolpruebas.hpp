@@ -311,8 +311,11 @@ template <class T> int arbol<T>::sumaVotos(nodo<T>* aux) {
 template <class T> void arbol<T>::MostrarParticipaciones(string usuario){
 Lista<T*>* participaciones = new Lista<T*>();
 llenarlista(raiz, participaciones, usuario);
-cout<<participaciones->size()<<endl;
+if(participaciones != NULL){
+cout<<"el usuario: "<<participaciones->cabeza()->getNombre()<<" tuvo "<<participaciones->size()<<" participaciones"<<endl;
 participaciones->ordenamientoInsercion();
+cout<<participaciones->toPrint(".")<<endl;
+}
 }
 
 template <class T> void arbol<T>::llenarlista(nodo<T>* aux, Lista<T*>* lista, string usuario){

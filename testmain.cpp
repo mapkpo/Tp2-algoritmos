@@ -19,19 +19,18 @@ post p3("Usuario3", "Contenido3", 3 , "post 3");
 //a que post lo quiero mandar es el id primero
 
 comentario c1("comentador 1","comentario 1",1);         
-comentario c2("comentador 1","comentario 2",2);
+comentario c2("comentador 2","comentario 2",2);
 comentario c3("comentador 1","comentario 3",3);
 comentario c4("comentador 1","comentario 4",4);
-comentario c5("comentador 1","comentario 5",5);
+comentario c5("comentador 2","comentario 5",5);
 comentario c6("comentador 1","comentario 6",6);
 
 c1.votarUp();
 c2.votarUp();
 c3.votarUp();
 c4.votarUp();
-c4.votarUp();
 c5.votarUp();
-c5.votarUp();
+c6.votarUp();
 
 /* 
 Primero el objeto, 
@@ -48,45 +47,78 @@ y ultimo a que comentario quiero ponerlo como respuesta sino un numero
 que no se haya usado para ser un comentario nuevo al post y no respuesta
 */
 
-miArbol.AgregarComentario(c1,3,1);
-miArbol.AgregarComentario(c2,3,2);
-miArbol.AgregarComentario(c3,3,3);         
-miArbol.AgregarComentario(c4,3,3);
-miArbol.AgregarComentario(c5,3,3);
-miArbol.AgregarComentario(c6,1,2);
+miArbol.AgregarComentario(c6,3,1);
+miArbol.AgregarComentario(c2,1,1);
+miArbol.AgregarComentario(c3,3,1);         
+miArbol.AgregarComentario(c4,3,1);
+miArbol.AgregarComentario(c5,3,1);
+miArbol.AgregarComentario(c1,1,1);
 
 miArbol.VerArbol();
+
+
 
 //para borrar llamo al metodo con el post a borrar
 
+miArbol.Borrar(p2);
 
 cout<<"-------------------------------------------"<<endl;
 
-
-c1.votarUp(); //estos votos solo funcionan antes de meterlos al arbol
-c2.votarUp();
-c3.votarUp();
-c4.votarUp();
-c4.votarUp();
-c5.votarUp();
-c5.votarUp();
-
 miArbol.VerArbol();
-//miArbol.ImprimirComentarioMasVotado(p3);
-//miArbol.VotarDown(c4);
-//miArbol.VotarDown(c4);
 
 //miArbol.ImprimirComentarioMasVotado(p3);
 
+
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+miArbol.VotarUp(c4);
+miArbol.VotarUp(c5);
+miArbol.VotarUp(c6);
+miArbol.VotarUp(c1);
+
+cout<<"-------------------------------------------"<<endl;
 
 miArbol.ValoracionPromedio(p3);
 
-
-if (c1.getTiempo() < c2.getTiempo()){   // aca anda
-    cout<<"fffffffffffff"<<endl;
-}
-
-
+cout<<"-------------------------------------------"<<endl;
 
 miArbol.MostrarParticipaciones("comentador 1");
 
