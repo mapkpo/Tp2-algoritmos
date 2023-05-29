@@ -32,6 +32,7 @@ public:
     Lista* resto(void); //retorna el puntero al "resto" de la lista
                         //resto= lo que queda de la lista sin la cabeza
     string toPrint(string p);
+    string toPrintnombre();
     T suma(T i);
     int size();
     void borrar(void); //borra la cabeza
@@ -77,15 +78,38 @@ string Lista<T>::toPrint(string p)
 {
     if (this->esvacia()) {
         return p;
+    } else {
+        ostringstream stm;
+        stm << this->cabeza()->getContenido();
+        if (!this->resto()->esvacia()) {
+            stm << " /// " << this->resto()->toPrint(p);
+        }
+        return stm.str();
+    }
+}
+
+template <class T>
+string Lista<T>::toPrintnombre()
+{
+    if (this->esvacia()) {
+        return "";
     }
     else {
         //std::ostringstream stm;
         ostringstream stm;
-        stm << this->cabeza()->getContenido() << " /// " << this->resto()->toPrint(p) << endl;
+        stm << this->cabeza()->getNombre() << " /// " << this->resto()->toPrintnombre() << endl;
         //cout<<endl<<" stm.str()= "<<stm.str()<<endl;
         return stm.str();
     }
 }
+
+
+
+
+
+
+
+
 
 template <class T>
 T Lista<T>::suma(T i)
@@ -172,8 +196,3 @@ void Lista<T>::ordenamientoInsercion()
         actual = actual->get_next();
     }
 }
-
-
-
-
-

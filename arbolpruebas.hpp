@@ -331,23 +331,6 @@ template <class T> void arbol<T>::llenarlista(nodo<T>* aux, Lista<T*>* lista, st
 
 
 
-
-
-
-
-
-
-
-
-template <class T> void arbol<T>::UsuarioMasParticipo(T x){
-    nodo<T>* comentarios = buscarNodo(raiz, x); //nodo que apunta a los comentarios del post
-    Lista<T*>* listadeusuarios = new Lista<T*>();
-    llenarlistausuarios(comentarios->izq,listadeusuarios);
-    cout<<listadeusuarios->toPrint(".")<<endl;
-    cout<<listadeusuarios->size()<<endl;
-
-}
-
 template <class T> void arbol<T>::llenarlistausuarios(nodo<T>* aux, Lista<T*>* lista){
     if (aux != NULL) {
         lista->add(aux->info);
@@ -355,3 +338,87 @@ template <class T> void arbol<T>::llenarlistausuarios(nodo<T>* aux, Lista<T*>* l
         llenarlistausuarios(aux->izq, lista);
     }
 } 
+
+
+
+
+
+
+/*
+template <class T> void arbol<T>::UsuarioMasParticipo(T x){
+    nodo<T>* comentarios = buscarNodo(raiz, x); //nodo que apunta a los comentarios del post
+    Lista<T*>* listadeusuarios = new Lista<T*>();
+    llenarlistausuarios(comentarios->izq,listadeusuarios);
+    cout<<listadeusuarios->toPrintnombre()<<endl;
+    cout<<listadeusuarios->size()<<endl;
+}
+*/
+
+template <class T>
+void arbol<T>::UsuarioMasParticipo(T x) {
+    nodo<T>* comentarios = buscarNodo(raiz, x); // Nodo que apunta a los comentarios del post
+    Lista<T*>* listadeusuarios = new Lista<T*>();
+    llenarlistausuarios(comentarios->izq, listadeusuarios);
+
+    Lista<Lista<T*>*>* listadeListas = new Lista<Lista<T*>*>();
+
+    // Iterar sobre la lista de usuarios y organizarlos en listas por nombre de usuario
+    while (!listadeusuarios->esvacia()) {
+        T* usuario = listadeusuarios->cabeza();
+        listadeusuarios = listadeusuarios->resto();
+
+        std::string nombreUsuario = usuario->getNombre();
+
+        // Buscar la lista correspondiente al nombre del usuario en la lista de listas
+        Lista<Lista<T*>*>* nodoLista = listadeListas;
+        bool encontrada = false;
+        while (!nodoLista->esvacia()) {
+            Lista<T*>* listaActual = nodoLista->cabeza();
+            nodoLista = nodoLista->resto();
+
+            if (!listaActual->esvacia() && listaActual->cabeza()->getNombre() == nombreUsuario) {
+                // Agregar el usuario a la lista actual
+                listaActual->add(usuario);
+                encontrada = true;
+                break;
+            }
+        }
+
+        if (!encontrada) {
+            // Si no se encontró una lista existente para el nombre del usuario, crear una nueva lista
+            Lista<T*>* nuevaLista = new Lista<T*>();
+            nuevaLista->add(usuario);
+            listadeListas->add(nuevaLista);
+        }
+    }
+
+    // Buscar la lista de mayor tamaño dentro de la lista de listas
+    int tamanoMaximo = 0;
+    Lista<T*>* listaMayor = NULL;
+    Lista<Lista<T*>*>* nodoLista = listadeListas;
+    while (!nodoLista->esvacia()) {
+        Lista<T*>* listaActual = nodoLista->cabeza();
+        nodoLista = nodoLista->resto();
+
+        int tamanoActual = listaActual->size();
+        if (tamanoActual > tamanoMaximo) {
+            tamanoMaximo = tamanoActual;
+            listaMayor = listaActual;
+        }
+    }
+
+    /*
+    // Mostrar la lista de listas y su tamaño
+    cout << "Lista de listas: " << listadeListas->toPrint(".") << endl;
+    cout << "Tamaño de la lista de listas: " << listadeListas->size() << endl;
+    */
+    // Mostrar la lista de mayor tamaño
+    cout << "Usuario con mas comentarios: ";
+    if (listaMayor != NULL) {
+        cout << listaMayor->cabeza()->getNombre();
+    }
+    cout << endl;
+}
+
+
+
