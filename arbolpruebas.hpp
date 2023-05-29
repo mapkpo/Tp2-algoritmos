@@ -47,7 +47,7 @@ public:
     void MostrarParticipaciones(string usuario);
     void llenarlista(nodo<T>* aux, Lista<T*>* lista, string usuario);
 
-    void llenarlistausuarios(nodo<T>* aux, Lista<Lista<T*>*>* lista);
+    void llenarlistausuarios(nodo<T>* aux, Lista<T*>* lista);
 
     
 };
@@ -341,35 +341,16 @@ template <class T> void arbol<T>::llenarlista(nodo<T>* aux, Lista<T*>* lista, st
 
 template <class T> void arbol<T>::UsuarioMasParticipo(T x){
     nodo<T>* comentarios = buscarNodo(raiz, x); //nodo que apunta a los comentarios del post
-
-    Lista<Lista<T*>*>* listadeusuarios = new Lista<Lista<T*>*>();
-    llenarlistausuarios(comentarios,listadeusuarios);
-    cout<<listadeusuarios->cabeza()->cabeza()->getNombre()<<endl;
-    cout<<listadeusuarios->cabeza()->size()<<endl;
+    Lista<T*>* listadeusuarios = new Lista<T*>();
+    llenarlistausuarios(comentarios->izq,listadeusuarios);
+    cout<<listadeusuarios->toPrint(".")<<endl;
+    cout<<listadeusuarios->size()<<endl;
 
 }
- 
-template <class T> void arbol<T>::llenarlistausuarios(nodo<T>* aux, Lista<Lista<T*>*>* lista){
-    if (aux != NULL) {
-        if(lista->esvacia()){ //1 si esta vacia agrega lista y agrega el comentario
-            Lista<T*>* nuevalista = new Lista<T*>();
-            lista->add(nuevalista);
-            lista->cabeza()->add(aux->info);
 
-            } else { while(lista != NULL){
-                    if(lista->cabeza()->cabeza()->getNombre() == aux->info->getNombre()){
-                        lista->cabeza()->add(aux->info);
-                    }
-                if (lista->resto() == NULL) {
-                    break;  
-                }
-                lista = lista->resto();
-                }
-                
-                Lista<T*>* nuevalista = new Lista<T*>();
-                lista->add(nuevalista);
-                lista->cabeza()->add(aux->info);
-            }
+template <class T> void arbol<T>::llenarlistausuarios(nodo<T>* aux, Lista<T*>* lista){
+    if (aux != NULL) {
+        lista->add(aux->info);
         llenarlistausuarios(aux->der, lista);
         llenarlistausuarios(aux->izq, lista);
     }
