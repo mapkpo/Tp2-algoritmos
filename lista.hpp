@@ -160,8 +160,8 @@ void Lista<T>::ordenamientoInsercion()
         Nodo<T>* recorrido = czo;
         while (recorrido != actual && recorrido != NULL) {
 
-            if (recorrido->get_dato() > actual->get_dato()) {
-            //if (recorrido->get_dato()->getTiempo() > actual->get_dato()->getTiempo()) {   //este no anda cuando comparo los tiempos
+            //if (recorrido->get_dato() > actual->get_dato()) { //este si anda solo comparando el id, pero no con el objeto tiempo pero la comparacion desde el main anda
+            if (recorrido->get_dato()->getTiempo() > actual->get_dato()->getTiempo()) {   //este no anda cuando comparo los tiempos
                 T temp = actual->get_dato();
                 actual->set_dato(recorrido->get_dato());
                 recorrido->set_dato(temp);

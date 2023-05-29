@@ -81,6 +81,13 @@ miArbol.VerArbol();
 
 miArbol.ValoracionPromedio(p3);
 
+
+if (c1.getTiempo() < c2.getTiempo()){   // aca anda
+    cout<<"fffffffffffff"<<endl;
+}
+
+
+
 miArbol.MostrarParticipaciones("comentador 1");
 
 //system("pause");
@@ -94,9 +101,7 @@ cout<<c5.getTiempo()<<endl;
 cout<<c6.getTiempo()<<endl;
 */
 
-if (c1.getTiempo() < c2.getTiempo()){
-    cout<<"fffffffffffff"<<endl;
-}
+
 
 
 
