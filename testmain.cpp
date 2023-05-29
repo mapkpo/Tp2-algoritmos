@@ -20,6 +20,7 @@ post p3("Usuario3", "Contenido3", 3 , "post 3");
 
 comentario c1("comentador 1","comentario 1",1);         
 comentario c2("comentador 2","comentario 2",2);
+
 comentario c3("comentador 1","comentario 3",3);
 comentario c4("comentador 1","comentario 4",4);
 comentario c5("comentador 2","comentario 5",5);

@@ -339,21 +339,6 @@ template <class T> void arbol<T>::llenarlistausuarios(nodo<T>* aux, Lista<T*>* l
     }
 } 
 
-
-
-
-
-
-/*
-template <class T> void arbol<T>::UsuarioMasParticipo(T x){
-    nodo<T>* comentarios = buscarNodo(raiz, x); //nodo que apunta a los comentarios del post
-    Lista<T*>* listadeusuarios = new Lista<T*>();
-    llenarlistausuarios(comentarios->izq,listadeusuarios);
-    cout<<listadeusuarios->toPrintnombre()<<endl;
-    cout<<listadeusuarios->size()<<endl;
-}
-*/
-
 template <class T>
 void arbol<T>::UsuarioMasParticipo(T x) {
     nodo<T>* comentarios = buscarNodo(raiz, x); // Nodo que apunta a los comentarios del post
