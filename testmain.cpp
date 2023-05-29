@@ -19,11 +19,11 @@ post p3("Usuario3", "Contenido3", 3 , "post 3");
 //a que post lo quiero mandar es el id primero
 
 comentario c1("comentador 1","comentario 1",1);         
-comentario c2("comentador 2","comentario 2",2);
-comentario c3("comentador 3","comentario 3",3);
-comentario c4("comentador 4","comentario 4",4);
-comentario c5("comentador 5","comentario 5",5);
-comentario c6("comentador 6","comentario 6",6);
+comentario c2("comentador 1","comentario 2",2);
+comentario c3("comentador 1","comentario 3",3);
+comentario c4("comentador 1","comentario 4",4);
+comentario c5("comentador 1","comentario 5",5);
+comentario c6("comentador 1","comentario 6",6);
 
 c1.votarUp();
 c2.votarUp();
@@ -71,7 +71,7 @@ c4.votarUp();
 c5.votarUp();
 c5.votarUp();
 
-//miArbol.VerArbol();
+miArbol.VerArbol();
 //miArbol.ImprimirComentarioMasVotado(p3);
 //miArbol.VotarDown(c4);
 //miArbol.VotarDown(c4);
@@ -81,7 +81,23 @@ c5.votarUp();
 
 miArbol.ValoracionPromedio(p3);
 
+miArbol.MostrarParticipaciones("comentador 1");
+
 //system("pause");
+
+/*
+cout<<c1.getTiempo()<<endl;
+cout<<c2.getTiempo()<<endl;
+cout<<c3.getTiempo()<<endl;
+cout<<c4.getTiempo()<<endl;
+cout<<c5.getTiempo()<<endl;
+cout<<c6.getTiempo()<<endl;
+*/
+
+if (c1.getTiempo() < c2.getTiempo()){
+    cout<<"fffffffffffff"<<endl;
+}
+
 
 
 

@@ -1,6 +1,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
+#include <chrono>
+#include "lista.hpp"
 
 using namespace std;
 
@@ -41,6 +43,9 @@ public:
     void VotarUp(T x);
     void VotarDown(T x);
     void ValoracionPromedio(T x);
+    void UsuarioMasParticipo(T x);
+    void MostrarParticipaciones(string usuario);
+    void llenarlista(nodo<T>* aux, Lista<T*>* lista, string usuario);
 
     
 };
@@ -280,8 +285,7 @@ template <class T> void arbol<T>::ValoracionPromedio(T x){
     cout<<"La valoracion promedio de los comentarios del post es: "<<votostotales/cantnodos<<endl;
 }
 
-template <class T>
-int arbol<T>::cantidadNodos(nodo<T>* aux) {
+template <class T> int arbol<T>::cantidadNodos(nodo<T>* aux) {
     if (aux == NULL) {
         return 0;
     }
@@ -303,4 +307,40 @@ template <class T> int arbol<T>::sumaVotos(nodo<T>* aux) {
     }
     return 0;  
 }
+
+template <class T> void arbol<T>::MostrarParticipaciones(string usuario){
+Lista<T*>* participaciones = new Lista<T*>();
+llenarlista(raiz, participaciones, usuario);
+cout<<participaciones->size()<<endl;
+participaciones->ordenamientoInsercion();
+}
+
+template <class T> void arbol<T>::llenarlista(nodo<T>* aux, Lista<T*>* lista, string usuario){
+    if (aux != NULL) {
+        if(!aux->info->esPost() && aux->info->getNombre() == usuario){lista->add(aux->info);}                   
+        llenarlista(aux->der, lista, usuario);
+        llenarlista(aux->izq, lista, usuario);
+    }
+}
+
+
+
+
+
+
+
+
+
+template <class T> void arbol<T>::UsuarioMasParticipo(T x){
+    nodo<T>* comentarios = buscarNodo(raiz, x); //nodo que apunta a los comentarios del post
+
+    Lista<Lista<T*>*>* listadeusuarios = new Lista<Lista<T*>*>();
+
+    if(listadeusuarios->esvacia()){
+
+    }
+
+
+}
+
 

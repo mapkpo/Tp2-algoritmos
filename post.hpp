@@ -56,7 +56,7 @@ public:
         votos -= 1;
     }
 
-    std::chrono::time_point<std::chrono::system_clock> getTiempo() const {
+    std::chrono::time_point<std::chrono::system_clock> getTiempo() const{
         return tiempo;
     }
 
@@ -66,6 +66,12 @@ public:
 
     string getNombre(){
         return nombre_usuario_creador;
+    }
+
+    bool esPost(){
+        if (titulo != "comentario"){
+            return true;
+        } else return false;
     }
 
 };
