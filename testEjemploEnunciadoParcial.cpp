@@ -65,41 +65,63 @@ miArbol.AgregarComentario(c13,2,5);
 miArbol.AgregarComentario(c14,2,6);
 
 
+cout<<"-------------------el arbol normal------------------------------"<< endl;
 miArbol.VerArbol();
 
+cout<<"----------------------------------------------------------------"<< endl;
 
-//para borrar llamo al metodo con el post a borrar
-
-//miArbol.Borrar(p2);
-
-cout<<"-------------------------------------------"<<endl;
-
-//miArbol.VerArbol();
-
-cout<<"-------------------------------------------"<<endl;
-
-for(int i=0; i<20; i++){
-    miArbol.VotarUp(c2);
+for(int i=0; i<4; i++){
+    miArbol.VotarUp(p1);
 }
 
-for(int i=0; i<10; i++){
+for(int i=0; i<15; i++){
+    miArbol.VotarUp(c1);
+}
+
+for(int i=0; i<76; i++){
+    miArbol.VotarDown(p2);
+}
+
+for(int i=0; i<155; i++){
+    miArbol.VotarUp(c4);
+}
+
+for(int i=0; i<25; i++){
     miArbol.VotarUp(c3);
 }
 
+for(int i=0; i<3; i++){
+    miArbol.VotarUp(c5);
+}
+
+for(int i=0; i<12; i++){
+    miArbol.VotarDown(c6);
+}
+
 miArbol.ImprimirComentarioMasVotado(p1);
-cout<<"---------------------------------------------"<< endl;
+
+cout<<"----------------------------------------------------------------"<< endl;
 
 miArbol.ValoracionPromedio(p1);
-cout<<"---------------------------------------------"<< endl;
+
+cout<<"----------------------------------------------------------------"<< endl;
 
 miArbol.MostrarParticipaciones("Ramiro D");
-cout<<"---------------------------------------------"<< endl;
+
+cout<<"----------------------------------------------------------------"<< endl;
 
 miArbol.UsuarioMasParticipo(p1);
 
+cout<<"----------------------------------------------------------------"<< endl;
 
-//system("pause");
+//para borrar llamo al metodo con el post a borrar
 
+miArbol.Borrar(p2);
 
+cout<<"---------------ahora el arbol con el post 2 borrado--------------"<<endl;
+
+miArbol.VerArbol();
+
+system("pause");
 
 }
