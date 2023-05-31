@@ -167,12 +167,11 @@ template <class T> void arbol<T>::AgregarComentario(T x, int postId, int comenta
     }
 
     if(aux->info->getId() == comentarioId){
-        aux = aux->izq;
+        //aux = aux->der;
 
         while(aux->der != NULL){ //itera hasta llegar al nulo
             aux = aux->der;
         }
-
         if(aux->der == NULL){
             nodo<T>* comentario = new nodo<T>;
             comentario->info = new T(x);
@@ -193,6 +192,13 @@ template <class T> void arbol<T>::AgregarComentario(T x, int postId, int comenta
         }     
     }
 }
+
+
+
+
+
+
+
 
 template <class T> void arbol<T>::printMasVotado(nodo<T>*& p, T post) 
 {
@@ -404,6 +410,3 @@ void arbol<T>::UsuarioMasParticipo(T x) {
     }
     cout << endl;
 }
-
-
-
