@@ -75,6 +75,10 @@ public:
         } else return false;
     }
 
+    string getTitulo(){
+        return titulo;
+    }
+
 };
 
 class comentario : public post{

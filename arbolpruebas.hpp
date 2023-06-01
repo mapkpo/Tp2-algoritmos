@@ -124,7 +124,7 @@ template <class T> void arbol<T>::show(nodo<T>* aux, int n)
     if (aux != NULL) {                      //OjO este es un recorrido dri
         show(aux->der, n + 1);
         for (i = 1; i <= n; i++) cout << "     ";
-        cout << aux->info->getContenido() << "\n";
+        cout << aux->info->getTitulo()<< " -- " << aux->info->getContenido() << "\n";
         show(aux->izq, n + 1);
     }
 }
