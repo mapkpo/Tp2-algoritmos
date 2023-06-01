@@ -69,6 +69,11 @@ template <class T> void arbol<T>::ArbolBusq(T x, nodo<T>*& nuevo)
     if (x < *(nuevo->info)) ArbolBusq(x, nuevo->izq); //aca le saque la estrllita a la x
 }
 
+/*
+El metodo borrar busca y elimina un determinado post en el arbol de busqueda binaria.
+Elimina tanto el nodo que contiene el post, como tambien todos sus comentarios asociados.
+*/
+
 template <class T> void arbol<T>::borrar(nodo<T>*& p, T post)
 {
     if (p == NULL) {
@@ -94,6 +99,10 @@ template <class T> void arbol<T>::borrar(nodo<T>*& p, T post)
         }
     }
 }
+/*
+El metodo "bor" se encarga de eliminar todos los comentarios asociados a un post.
+En nuestra implementacion lo usamos para eliminar comentarios, y comentarios a comentarios.
+*/
 
 template <class T> void arbol<T>::bor(nodo<T>*& d)
 {
@@ -109,6 +118,9 @@ template <class T> void arbol<T>::bor(nodo<T>*& d)
         q = NULL;
     }
 }
+/*
+El metodo "esta" retorna true/false si se encuentra el parametro pasado a la funcion dentro del arbol.
+*/
 
 template <class T> bool arbol<T>::esta(nodo<T>* aux, T x)
 {
@@ -118,13 +130,17 @@ template <class T> bool arbol<T>::esta(nodo<T>* aux, T x)
     return true;
 }
 
+/*
+El metodo "show" muestra graficamente el contenido del arbol.
+*/
+
 template <class T> void arbol<T>::show(nodo<T>* aux, int n)
 {
     int i;
     if (aux != NULL) {                      //OjO este es un recorrido dri
         show(aux->der, n + 1);
         for (i = 1; i <= n; i++) cout << "     ";
-        cout << aux->info->getTitulo()<< " -- " << aux->info->getContenido() << "\n";
+        cout << aux->info->getContenido() << "\n";
         show(aux->izq, n + 1);
     }
 }
@@ -143,6 +159,14 @@ template <class T> T arbol<T>::menor(nodo<T>* aux)
     if (aux->izq == NULL)return aux->info;
     return menor(aux->izq);
 }
+
+/*
+El metodo "AgregarComentario" agrega un comentario a un post especifico.
+parametros: x = objeto comentario a agg.
+            postId = numero de post al que se añade el comentario
+            comentarioId = si se quiere agregar un comentario a un comentario se pasa el valor del comentario
+                            al cual se quiere responder. Caso contrario se pasa un valor que no se haya usado.
+*/
 
 template <class T> void arbol<T>::AgregarComentario(T x, int postId, int comentarioId)
 {
@@ -167,11 +191,12 @@ template <class T> void arbol<T>::AgregarComentario(T x, int postId, int comenta
     }
 
     if(aux->info->getId() == comentarioId){
-        //aux = aux->der;
+        //aux = aux->izq;
 
         while(aux->der != NULL){ //itera hasta llegar al nulo
             aux = aux->der;
         }
+
         if(aux->der == NULL){
             nodo<T>* comentario = new nodo<T>;
             comentario->info = new T(x);
@@ -193,12 +218,11 @@ template <class T> void arbol<T>::AgregarComentario(T x, int postId, int comenta
     }
 }
 
-
-
-
-
-
-
+/*
+El metodo "printMasVotado" recorre todos los comentarios de un post especifico e imprime cual fue el comentario
+mas votado y su informacion(usuario, cantVotos, ID).
+El comentario mas votado puede ser un comentario, o un comentario a comentario.
+*/
 
 template <class T> void arbol<T>::printMasVotado(nodo<T>*& p, T post) 
 {
@@ -316,6 +340,10 @@ template <class T> int arbol<T>::sumaVotos(nodo<T>* aux) {
     return 0;  
 }
 
+/*
+El metodo "MostrarParticipaciones" devuelve el numero de interacciones que tuvo un "usuario"(parametro).
+Crea una lista y almacena todos los contenidos de los comentarios que realizo en el arbol de post´s.
+*/
 template <class T> void arbol<T>::MostrarParticipaciones(string usuario){
 Lista<T*>* participaciones = new Lista<T*>();
 llenarlista(raiz, participaciones, usuario);
@@ -326,6 +354,11 @@ cout<<participaciones->toPrint(".")<<endl;
 }
 }
 
+/*
+El metodo "llenarlista" almacena en la lista pasada como parametro todos los contenidos de los comentarios
+realizados por "usuario" dentro del arbol de post´s.
+*/
+
 template <class T> void arbol<T>::llenarlista(nodo<T>* aux, Lista<T*>* lista, string usuario){
     if (aux != NULL) {
         if(!aux->info->esPost() && aux->info->getNombre() == usuario){lista->add(aux->info);}                   
@@ -334,8 +367,9 @@ template <class T> void arbol<T>::llenarlista(nodo<T>* aux, Lista<T*>* lista, st
     }
 }
 
+/*
 
-
+*/
 
 template <class T> void arbol<T>::llenarlistausuarios(nodo<T>* aux, Lista<T*>* lista){
     if (aux != NULL) {
@@ -344,6 +378,13 @@ template <class T> void arbol<T>::llenarlistausuarios(nodo<T>* aux, Lista<T*>* l
         llenarlistausuarios(aux->izq, lista);
     }
 } 
+
+
+/*
+El metodo "UsuarioMasParticipo" devuelve el usuario que mas participaciones tuvo en un post.
+Crea una lista de listas, que contiene en cada nodo una lista con las participaciones de cada
+usuario, y devuelve el de mayor size con su informacion.
+*/
 
 template <class T>
 void arbol<T>::UsuarioMasParticipo(T x) {
@@ -410,3 +451,6 @@ void arbol<T>::UsuarioMasParticipo(T x) {
     }
     cout << endl;
 }
+
+
+
